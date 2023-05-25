@@ -32,11 +32,6 @@ class AttributeResolverTest extends KernelTestCase
         $actual = $attributeResolver->resolveAttributesByDictionary($dictionary, $slug);
 
         $this->assertEqualsCanonicalizing($expectedResult, $actual);
-        //
-        //sort($actual);
-        //sort($expectedResult);
-        //
-        //$this->assertEquals(implode(',', $expectedResult), implode(',', $actual));
     }
 
     public function provideData(): iterable
