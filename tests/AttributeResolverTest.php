@@ -31,10 +31,12 @@ class AttributeResolverTest extends KernelTestCase
         $attributeResolver = $this->getContainer()->get('App\Services\Attribute\AttributeResolver');
         $actual = $attributeResolver->resolveAttributesByDictionary($dictionary, $slug);
 
-        sort($actual);
-        sort($expectedResult);
-
-        $this->assertEquals(implode(',', $expectedResult), implode(',', $actual));
+        $this->assertEqualsCanonicalizing($expectedResult, $actual);
+        //
+        //sort($actual);
+        //sort($expectedResult);
+        //
+        //$this->assertEquals(implode(',', $expectedResult), implode(',', $actual));
     }
 
     public function provideData(): iterable
@@ -81,6 +83,16 @@ class AttributeResolverTest extends KernelTestCase
                     'iphone-14-pro',
                     'iphone-14-pro-max',
                     'iphone-13-pro-max',
+                ],
+            ],
+            'Test #4' => [
+                $dictionary,
+                'iphone-14-pro-iphone-14-pro-max-iphone-13-pro-max-iphone-12',
+                [
+                    'iphone-14-pro',
+                    'iphone-14-pro-max',
+                    'iphone-13-pro-max',
+                    'iphone-12',
                 ],
             ],
         ];

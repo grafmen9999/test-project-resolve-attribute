@@ -10,9 +10,9 @@ class AttributeResolver
     {
         // some action for resolve attributes;
         $result = [
-            'iphone-14-pro-max',
             'iphone-14-pro',
             'iphone-13-pro',
+            'iphone-14-pro-max',
         ];
 
         return $result;
