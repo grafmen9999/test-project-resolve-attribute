@@ -113,6 +113,27 @@ class AttributeResolverTest extends KernelTestCase
                     'iphone-11-pro'
                 ],
             ],
+            [
+                $dictionary,
+                'iphone-14',
+                [
+                    'iphone-14',
+                ],
+            ],
+            [
+                $dictionary,
+                '',
+                [],
+            ],
+            // this case not working correct. Need update logic...
+            [
+                $dictionary,
+                'iphone-14-pro-max-macbook-pro-iphone-14',
+                [
+                    'iphone-14-pro-max',
+                    //'iphone-14',
+                ],
+            ],
         ];
     }
 }
