@@ -53,7 +53,7 @@ class AttributeResolverTest extends KernelTestCase
         ];
 
         return [
-            'Test #1' => [
+            [
                 $dictionary,
                 'iphone-14-pro-max-iphone-14-pro-iphone-13-pro',
                 [
@@ -62,7 +62,7 @@ class AttributeResolverTest extends KernelTestCase
                     'iphone-13-pro',
                 ],
             ],
-            'Test #2' => [
+            [
                 $dictionary,
                 'iphone-14-iphone-14-pro-iphone-13',
                 [
@@ -71,7 +71,7 @@ class AttributeResolverTest extends KernelTestCase
                     'iphone-13',
                 ],
             ],
-            'Test #3' => [
+            [
                 $dictionary,
                 'iphone-14-pro-iphone-14-pro-max-iphone-13-pro-max',
                 [
@@ -80,7 +80,7 @@ class AttributeResolverTest extends KernelTestCase
                     'iphone-13-pro-max',
                 ],
             ],
-            'Test #4' => [
+            [
                 $dictionary,
                 'iphone-14-pro-iphone-14-pro-max-iphone-13-pro-max-iphone-12',
                 [
@@ -88,6 +88,29 @@ class AttributeResolverTest extends KernelTestCase
                     'iphone-14-pro-max',
                     'iphone-13-pro-max',
                     'iphone-12',
+                ],
+            ],
+            [
+                $dictionary,
+                'iphone-14-pro-iphone-14-iphone-13-pro-max-iphone-se-iphone-12',
+                [
+                    'iphone-14-pro',
+                    'iphone-14',
+                    'iphone-13-pro-max',
+                    'iphone-se',
+                    'iphone-12',
+                ],
+            ],
+            [
+                $dictionary,
+                'iphone-14-iphone-se-iphone-14-pro-iphone-13-pro-max-iphone-12-iphone-11-pro',
+                [
+                    'iphone-14',
+                    'iphone-se',
+                    'iphone-14-pro',
+                    'iphone-13-pro-max',
+                    'iphone-12',
+                    'iphone-11-pro'
                 ],
             ],
         ];
