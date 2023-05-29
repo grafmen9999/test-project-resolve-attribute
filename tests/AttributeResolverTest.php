@@ -36,7 +36,7 @@ class AttributeResolverTest extends KernelTestCase
 
     public function provideData(): iterable
     {
-        $dictionary = [
+        $dictionaryIphone = [
             'iphone-11',
             'iphone-12',
             'iphone-13',
@@ -52,9 +52,18 @@ class AttributeResolverTest extends KernelTestCase
             'iphone-se',
         ];
 
+        $dictionaryColor = [
+            'blue',
+            'silver',
+            'white',
+            'purple',
+            'sierra-blue',
+            'red',
+        ];
+
         return [
             [
-                $dictionary,
+                $dictionaryIphone,
                 'iphone-14-pro-max-iphone-14-pro-iphone-13-pro',
                 [
                     'iphone-14-pro-max',
@@ -63,7 +72,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionary,
+                $dictionaryIphone,
                 'iphone-14-iphone-14-pro-iphone-13',
                 [
                     'iphone-14',
@@ -72,7 +81,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionary,
+                $dictionaryIphone,
                 'iphone-14-pro-iphone-14-pro-max-iphone-13-pro-max',
                 [
                     'iphone-14-pro',
@@ -81,7 +90,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionary,
+                $dictionaryIphone,
                 'iphone-14-pro-iphone-14-pro-max-iphone-13-pro-max-iphone-12',
                 [
                     'iphone-14-pro',
@@ -91,7 +100,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionary,
+                $dictionaryIphone,
                 'iphone-14-pro-iphone-14-iphone-13-pro-max-iphone-se-iphone-12',
                 [
                     'iphone-14-pro',
@@ -102,7 +111,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionary,
+                $dictionaryIphone,
                 'iphone-14-iphone-se-iphone-14-pro-iphone-13-pro-max-iphone-12-iphone-11-pro',
                 [
                     'iphone-14',
@@ -114,25 +123,59 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionary,
+                $dictionaryIphone,
                 'iphone-14',
                 [
                     'iphone-14',
                 ],
             ],
             [
-                $dictionary,
+                $dictionaryIphone,
                 '',
                 [],
             ],
             // this case not working correct. Need update logic...
             [
-                $dictionary,
+                $dictionaryIphone,
                 'iphone-14-pro-max-macbook-pro-iphone-14',
                 [
                     'iphone-14-pro-max',
                     //'iphone-14',
                 ],
+            ],
+            [
+                $dictionaryColor,
+                'white-blue',
+                [
+                    'white',
+                    'blue',
+                ]
+            ],
+            [
+                $dictionaryColor,
+                'white-sierra-blue',
+                [
+                    'white',
+                    'sierra-blue',
+                ]
+            ],
+            [
+                $dictionaryColor,
+                'sierra-blue-red',
+                [
+                    'sierra-blue',
+                    'red',
+                ]
+            ],
+            [
+                $dictionaryColor,
+                'silver-purple-red-white',
+                [
+                    'silver',
+                    'purple',
+                    'red',
+                    'white',
+                ]
             ],
         ];
     }

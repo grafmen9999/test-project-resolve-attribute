@@ -15,8 +15,8 @@ class AttributeResolver
 
         foreach (explode($separator, $slug) as $itemSlug) {
             $currentSlugArray[] = $itemSlug;
-            $currentSlug = implode($separator, $currentSlugArray);
 
+            $currentSlug = implode($separator, $currentSlugArray);
             $key = array_search($currentSlug, $dictionary);
 
             if (false !== $key) {
@@ -27,7 +27,15 @@ class AttributeResolver
             if (null !== $lastKey) {
                 $result[] = $dictionary[$lastKey];
                 $currentSlugArray = [$itemSlug];
-                $lastKey = null;
+
+                $currentSlug = implode($separator, $currentSlugArray);
+                $key = array_search($currentSlug, $dictionary);
+
+                if (false !== $key) {
+                    $lastKey = $key;
+                } else {
+                    $lastKey = null;
+                }
             }
         }
 
