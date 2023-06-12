@@ -25,7 +25,7 @@ class AttributeResolver
             array_push($currentSlugArray, $currentValue);
             array_push($currentKeysForRemove, $currentKey);
 
-            $currentSlug = implode($explodeSeparator, $currentSlugArray);
+            $currentSlug = implode($implodeSeparator, $currentSlugArray);
 
             $searchKeyFromDictionary = array_search($currentSlug, $dictionary);
 
