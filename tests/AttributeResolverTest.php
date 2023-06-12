@@ -21,7 +21,9 @@ class AttributeResolverTest extends KernelTestCase
      * @param string $slug
      * @param array $expectedResult
      *
-     * @dataProvider provideData
+     * @dataProvider provideIPhoneData
+     * @dataProvider provideColorData
+     * @dataProvider provideMacData
      */
     public function testGetDataAttributesFromStringAndDictionary(
         array $dictionary,
@@ -34,9 +36,9 @@ class AttributeResolverTest extends KernelTestCase
         $this->assertEqualsCanonicalizing($expectedResult, $actual);
     }
 
-    public function provideData(): iterable
+    public function provideIPhoneData(): iterable
     {
-        $dictionaryIphone = [
+        $dictionary = [
             'iphone-11',
             'iphone-12',
             'iphone-13',
@@ -52,18 +54,9 @@ class AttributeResolverTest extends KernelTestCase
             'iphone-se',
         ];
 
-        $dictionaryColor = [
-            'blue',
-            'silver',
-            'white',
-            'purple',
-            'sierra-blue',
-            'red',
-        ];
-
         return [
             [
-                $dictionaryIphone,
+                $dictionary,
                 'iphone-14-pro-max-iphone-14-pro-iphone-13-pro',
                 [
                     'iphone-14-pro-max',
@@ -72,7 +65,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionaryIphone,
+                $dictionary,
                 'iphone-14-iphone-14-pro-iphone-13',
                 [
                     'iphone-14',
@@ -81,7 +74,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionaryIphone,
+                $dictionary,
                 'iphone-14-pro-iphone-14-pro-max-iphone-13-pro-max',
                 [
                     'iphone-14-pro',
@@ -90,7 +83,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionaryIphone,
+                $dictionary,
                 'iphone-14-pro-iphone-14-pro-max-iphone-13-pro-max-iphone-12',
                 [
                     'iphone-14-pro',
@@ -100,7 +93,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionaryIphone,
+                $dictionary,
                 'iphone-14-pro-iphone-14-iphone-13-pro-max-iphone-se-iphone-12',
                 [
                     'iphone-14-pro',
@@ -111,7 +104,7 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionaryIphone,
+                $dictionary,
                 'iphone-14-iphone-se-iphone-14-pro-iphone-13-pro-max-iphone-12-iphone-11-pro',
                 [
                     'iphone-14',
@@ -123,28 +116,43 @@ class AttributeResolverTest extends KernelTestCase
                 ],
             ],
             [
-                $dictionaryIphone,
+                $dictionary,
                 'iphone-14',
                 [
                     'iphone-14',
                 ],
             ],
             [
-                $dictionaryIphone,
+                $dictionary,
                 '',
                 [],
             ],
             // this case not working correct. Need update logic...
             [
-                $dictionaryIphone,
+                $dictionary,
                 'iphone-14-pro-max-macbook-pro-iphone-14',
                 [
                     'iphone-14-pro-max',
-                    //'iphone-14',
+                    'iphone-14',
                 ],
             ],
+        ];
+    }
+
+    public function provideColorData(): iterable
+    {
+        $dictionary = [
+            'blue',
+            'silver',
+            'white',
+            'purple',
+            'sierra-blue',
+            'red',
+        ];
+
+        return [
             [
-                $dictionaryColor,
+                $dictionary,
                 'white-blue',
                 [
                     'white',
@@ -152,7 +160,7 @@ class AttributeResolverTest extends KernelTestCase
                 ]
             ],
             [
-                $dictionaryColor,
+                $dictionary,
                 'white-sierra-blue',
                 [
                     'white',
@@ -160,7 +168,7 @@ class AttributeResolverTest extends KernelTestCase
                 ]
             ],
             [
-                $dictionaryColor,
+                $dictionary,
                 'sierra-blue-red',
                 [
                     'sierra-blue',
@@ -168,7 +176,7 @@ class AttributeResolverTest extends KernelTestCase
                 ]
             ],
             [
-                $dictionaryColor,
+                $dictionary,
                 'silver-purple-red-white',
                 [
                     'silver',
@@ -176,6 +184,49 @@ class AttributeResolverTest extends KernelTestCase
                     'red',
                     'white',
                 ]
+            ],
+        ];
+    }
+
+    public function provideMacData(): iterable
+    {
+        $dictionary = [
+            'macbook-pro',
+            'imac',
+            'mac-mini',
+            'macbook-air-m1',
+            'macbook-air-m2',
+            'macbook-pro-13-m1',
+            'macbook-pro-14-m1',
+            'macbook-pro-14-m2',
+            'macbook-pro-16-m1',
+            'macbook-pro-16-m2',
+        ];
+
+        return [
+            [
+                $dictionary,
+                'macbook-pro-16-m1',
+                [
+                    'macbook-pro-16-m1',
+                ],
+            ],
+            [
+                $dictionary,
+                'macbook-pro-16-m1-macbook-pro-13-m1',
+                [
+                    'macbook-pro-16-m1',
+                    'macbook-pro-13-m1',
+                ],
+            ],
+            [
+                $dictionary,
+                'macbook-air-m1-mac-mini-macbook-pro',
+                [
+                    'macbook-air-m1',
+                    'mac-mini',
+                    'macbook-pro',
+                ],
             ],
         ];
     }
