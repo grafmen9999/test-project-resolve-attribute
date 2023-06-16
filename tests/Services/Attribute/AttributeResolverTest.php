@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests;
+namespace App\Tests\Services\Attribute;
 
+use App\Services\Attribute\AttributeResolver;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -30,7 +31,7 @@ class AttributeResolverTest extends KernelTestCase
         string $slug,
         array $expectedResult,
     ): void {
-        $attributeResolver = $this->getContainer()->get('App\Services\Attribute\AttributeResolver');
+        $attributeResolver = $this->getContainer()->get(AttributeResolver::class);
         $actual = $attributeResolver->resolveAttributesByDictionary($dictionary, $slug);
 
         $this->assertEqualsCanonicalizing($expectedResult, $actual);
